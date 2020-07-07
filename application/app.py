@@ -1,6 +1,7 @@
 from flask import request, render_template, jsonify, url_for, redirect, g
 from .models import User, Dog
-from index import app, db
+from .models import dog_schema, dogs_schema
+from index import app, db, ma
 from sqlalchemy.exc import IntegrityError
 from .utils.auth import generate_token, requires_auth, verify_token
 
@@ -24,8 +25,9 @@ def get_user():
 @app.route("/api/get_user_dogs", methods=["GET"])
 @requires_auth
 def get_dogs():
-    dog=Dog.query.filter_by(user_id=g.current_user["id"]).first()
-    return jsonify(result=dog.breed)
+    dogs=Dog.query.filter_by(user_id=g.current_user["id"]).all()
+    # print(dogs_schema.dump(dogs))
+    return jsonify(result=dogs_schema.dump(dogs))
 
 
 @app.route("/api/create_user", methods=["POST"])

@@ -1,0 +1,11 @@
+2020-07-07 12:43:35.707 CDT [3946] LOG:  starting PostgreSQL 12.3 on x86_64-apple-darwin18.7.0, compiled by Apple clang version 11.0.0 (clang-1100.0.33.17), 64-bit
+2020-07-07 12:43:35.709 CDT [3946] LOG:  listening on IPv6 address "::1", port 5432
+2020-07-07 12:43:35.709 CDT [3946] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2020-07-07 12:43:35.709 CDT [3946] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2020-07-07 12:43:35.727 CDT [3947] LOG:  database system was shut down at 2020-07-07 09:01:24 CDT
+2020-07-07 12:43:35.731 CDT [3946] LOG:  database system is ready to accept connections
+2020-07-07 12:44:33.897 CDT [3973] FATAL:  database "katherinepully" does not exist
+2020-07-07 12:47:13.747 CDT [4006] LOG:  unexpected EOF on client connection with an open transaction
+2020-07-07 12:48:07.159 CDT [4014] LOG:  unexpected EOF on client connection with an open transaction
+2020-07-07 12:48:42.982 CDT [4022] LOG:  unexpected EOF on client connection with an open transaction
+2020-07-07 12:52:08.964 CDT [4081] LOG:  unexpected EOF on client connection with an open transaction

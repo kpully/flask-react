@@ -14,11 +14,11 @@ export function receiveProtectedData(data) {
     };
 }
 
-export function receiveProtectedDogData(data) {
+export function receiveProtectedDogData(dogs) {
     return {
         type: RECEIVE_PROTECTED_DOG_DATA,
         payload: {
-            data,
+            dogs,
         },
     };
 }

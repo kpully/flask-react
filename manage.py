@@ -6,6 +6,7 @@ from application.app import app, db
 migrate = Migrate(app, db)
 manager = Manager(app)
 
+
 # migrations
 manager.add_command('db', MigrateCommand)
 

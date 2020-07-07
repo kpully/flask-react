@@ -1,4 +1,4 @@
-from index import db, bcrypt
+from index import db, bcrypt, ma
 
 
 class User(db.Model):
@@ -36,3 +36,10 @@ class Dog(db.Model):
         self.breed=breed
         self.user_id=user_id
 
+class DogSchema(ma.Schema):
+    class Meta:
+        # Fields to expose
+        fields = ("name", "breed", "id")
+
+dog_schema=DogSchema()
+dogs_schema = DogSchema(many=True)

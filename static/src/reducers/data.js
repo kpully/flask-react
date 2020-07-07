@@ -5,6 +5,7 @@ const initialState = {
     data: null,
     isFetching: false,
     loaded: false,
+    dogs: [],
 };
 
 export default createReducer(initialState, {
@@ -24,7 +25,7 @@ export default createReducer(initialState, {
         }),
     [RECEIVE_PROTECTED_DOG_DATA]: (state, payload) =>
         Object.assign({}, state, {
-            dog: payload.data,
+            dogs: payload.dogs,
             isFetching: false,
             loaded: true,
         }),

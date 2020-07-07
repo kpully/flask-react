@@ -30,6 +30,11 @@ def get_dogs():
     return jsonify(result=dogs_schema.dump(dogs))
 
 
+# @app.route("/api/delete_dog", methods=["POST"])
+# @requires_auth
+# def delete_dog(dog_id):
+
+
 @app.route("/api/create_user", methods=["POST"])
 def create_user():
     incoming = request.get_json()
@@ -57,12 +62,11 @@ def create_dog_entry():
     dog = Dog(
         name=incoming["name"],
         breed=incoming["breed"],
-        user_id=incoming["user_id"]
+        user_id=incoming["user_id"],
+        image=incoming["image"]
     )
     db.session.add(dog)
     db.session.commit()
-  
-    # new_dog = Dog.query.filter_by(name=incoming["name"], breed=incoming["breed"], user_id=incoming["user_id"]).first()
 
     return jsonify(
         breed=dog.breed,

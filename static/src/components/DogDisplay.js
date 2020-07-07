@@ -25,6 +25,16 @@ var test_data=[
     {breed:'station one',name:'000',id:2},
 ];
 
+const style = {
+    marginTop: 50,
+    paddingBottom: 50,
+    paddingTop: 25,
+    width: '50%',
+    textAlign: 'center',
+    display: 'inline-block',
+};
+
+
 @connect(mapStateToProps, mapDispatchToProps)
 export default class DogDisplay extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -34,22 +44,38 @@ export default class DogDisplay extends React.Component { // eslint-disable-line
 
     fetchData() {
         const token = this.props.token;
-        // console.log("fetch dog data")
         this.props.fetchProtectedDogData(token);
+    }
+
+    deleteDog() {
+        const token = this.props.token;
     }
 
 	render() {
             // console.log(this.props.test_data);
+            console.log(this.props.data.dogs.length<50);
               return (
                 <div>
-                <h1>Dog Display</h1>
-                  {this.props.data.dogs.map(i=> (
-                  
-                    <Paper elevation={3} key={i.id}>{i.breed}</Paper>
-                    
+                {this.props.data.dogs.length==0
+                  ? <h1> you got no dogs...</h1>
+                    :
+                    <div>
+                    <h1>Your dogs</h1> 
+                    {this.props.data.dogs.map(i=> (
+                            <Paper style={style} elevation={3} key={i.id}>
+                            <p>Name: {i.name}</p>
+                            <p> Breed: {i.breed}</p>
+                            <div>
+                            <button>Delete</button>
+                            </div>
+                            </Paper> 
+                            
                     ))}
+                    </div>
+   
+                }
                 </div>
-
+                
               );
             
           }
@@ -57,6 +83,7 @@ export default class DogDisplay extends React.Component { // eslint-disable-line
 
 	DogDisplay.propTypes = {
     fetchProtectedDogData: React.PropTypes.func,
+    deleteDog: React.PropTypes.func,
     loaded: React.PropTypes.bool,
     userName: React.PropTypes.string,
     data: React.PropTypes.any,

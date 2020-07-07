@@ -40,7 +40,8 @@ export default class AddDogView extends React.Component {
 			breed:"",
 			name:"",
 			user_id:"",
-			redirectTo: redirectRoute
+			redirectTo: redirectRoute,
+			image:null
 		};
 	}
 
@@ -72,7 +73,7 @@ fetchData() {
 
 save(e) {
 	e.preventDefault();
-	this.props.registerDog(this.state.breed,this.state.name, this.props.data.data.id, this.state.redirectTo);
+	this.props.registerDog(this.state.breed,this.state.name, this.props.data.data.id, this.state.image, this.state.redirectTo);
 }
 
 render() {
@@ -104,6 +105,10 @@ render() {
                               type="breed"
                               onChange={(e) => this.changeValue(e, 'breed')}
                             />
+                        </div>
+
+                        <div className="col-md-12">
+                        <input type='file' accept="image/*" onChange={(e)=>this.changeValue(e, 'image')}  />
                         </div>
 
 					<RaisedButton

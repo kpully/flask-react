@@ -28,11 +28,14 @@ export function create_user(email, password) {
     });
 }
 
-export function create_dog_entry(breed,name, user_id) {
+export function create_dog_entry(breed,name, user_id, image) {
+    console.log(breed);
+    console.log(image);
     return axios.post('/api/create_dog_entry', {
         breed,
         name,
-        user_id
+        user_id,
+        image
     });
 }
 

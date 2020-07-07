@@ -30,11 +30,13 @@ class Dog(db.Model):
     name=db.Column(db.String(255))
     breed=db.Column(db.String(255))
     user_id=db.Column(db.Integer(),db.ForeignKey('users.id'))
+    dog_image=db.Column(db.LargeBinary)
 
-    def __init__(self,name,breed, user_id):
+    def __init__(self,name,breed, user_id, image):
         self.name=name
         self.breed=breed
         self.user_id=user_id
+        self.image=image
 
 class DogSchema(ma.Schema):
     class Meta:

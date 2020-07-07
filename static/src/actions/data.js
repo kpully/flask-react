@@ -68,10 +68,10 @@ export function fetchProtectedDogData(token) {
     };
 }
 
-export function registerDog(breed, name, user_id) {
+export function registerDog(breed, name, user_id, image) {
     return function (dispatch) {
         dispatch(registerDogRequest());
-        return create_dog_entry(breed, name, user_id)
+        return create_dog_entry(breed, name, user_id, image)
             .then(parseJSON)
             .then(response => {
                     dispatch(registerDogSuccess(response.name));

@@ -31,7 +31,7 @@
   "devDependencies": {
     "autoprefixer": "6.5.3",
     "axios": "^0.15.3",
-    "babel-core": "^6.4.5",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.1",
     "babel-plugin-react-transform": "^2.0.0",
@@ -78,7 +78,7 @@
     "material-ui": "^0.16.4",
     "mocha": "^3.0.2",
     "morgan": "^1.6.1",
-    "node-sass": "^3.4.2",
+    "node-sass": "^4.14.1",
     "postcss-import": "^9.0.0",
     "postcss-loader": "^1.1.1",
     "q": "^1.4.1",

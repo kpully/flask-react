@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../actions/data';
+import DogDisplay from './DogDisplay'
 
 function mapStateToProps(state) {
     return {
@@ -11,7 +12,6 @@ function mapStateToProps(state) {
         isFetching: state.data.isFetching,
     };
 }
-
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators(actionCreators, dispatch);
@@ -29,7 +29,7 @@ export default class ProtectedView extends React.Component {
         this.props.fetchProtectedData(token);
     }
 
-    render() {
+    render() {  
         return (
             <div>
                 {!this.props.loaded
@@ -39,6 +39,8 @@ export default class ProtectedView extends React.Component {
                         <h1>Welcome back,
                             {this.props.userName}!</h1>
                         <h1>{this.props.data.data.email}</h1>
+                        <DogDisplay />
+
                     </div>
                 }
             </div>

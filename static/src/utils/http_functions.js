@@ -28,6 +28,14 @@ export function create_user(email, password) {
     });
 }
 
+export function create_dog_entry(breed,name, user_id) {
+    return axios.post('/api/create_dog_entry', {
+        breed,
+        name,
+        user_id
+    });
+}
+
 export function get_token(email, password) {
     return axios.post('/api/get_token', {
         email,
@@ -41,4 +49,9 @@ export function has_github_token(token) {
 
 export function data_about_user(token) {
     return axios.get('/api/user', tokenConfig(token));
+}
+
+export function data_about_user_dogs(token) {
+    console.log("data_about_user_dogs");
+    return axios.get('/api/get_user_dogs', tokenConfig(token))
 }

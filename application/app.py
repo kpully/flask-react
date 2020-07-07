@@ -1,5 +1,5 @@
 from flask import request, render_template, jsonify, url_for, redirect, g
-from .models import User
+from .models import User, Dog
 from index import app, db
 from sqlalchemy.exc import IntegrityError
 from .utils.auth import generate_token, requires_auth, verify_token
@@ -19,6 +19,13 @@ def any_root_path(path):
 @requires_auth
 def get_user():
     return jsonify(result=g.current_user)
+
+
+@app.route("/api/get_user_dogs", methods=["GET"])
+@requires_auth
+def get_dogs():
+    dog=Dog.query.filter_by(user_id=g.current_user["id"]).first()
+    return jsonify(result=dog.breed)
 
 
 @app.route("/api/create_user", methods=["POST"])
@@ -42,6 +49,23 @@ def create_user():
         token=generate_token(new_user)
     )
 
+@app.route("/api/create_dog_entry", methods=["POST"])
+def create_dog_entry():
+    incoming = request.get_json()
+    dog = Dog(
+        name=incoming["name"],
+        breed=incoming["breed"],
+        user_id=incoming["user_id"]
+    )
+    db.session.add(dog)
+    db.session.commit()
+  
+    # new_dog = Dog.query.filter_by(name=incoming["name"], breed=incoming["breed"], user_id=incoming["user_id"]).first()
+
+    return jsonify(
+        breed=dog.breed,
+        name=dog.name
+    )
 
 @app.route("/api/get_token", methods=["POST"])
 def get_token():
